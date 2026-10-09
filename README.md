@@ -27,7 +27,7 @@ on an energy storage system. The RTControl framework involves the use of three a
 EnergyStorageSystem, ControlMode, and UseCase.
 
 For each class type there are several built-in subclasses, but user defined classes may also be configured and used.
-More detailed documentation can be found on the [Interoperability Framework Control Module](https://interoperability-framework-control-module.github.io/) site,
+More detailed documentation can be found on the [Interoperability Framework Control Module](https://interoperability-control-modules.github.io/interoperability-framework-control-module.github.io/) site,
 including descriptions of the various classes which are available to represent storage systems,
 use cases, and control modes.
 
