@@ -1,6 +1,36 @@
 [build-system]
-requires = ["poetry-core>=1.2.2"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "volttron-realtime-control"
+version = "0.2"
+description = "The real-time control agent: runs the control evaluation engine against live resources."
+authors = [{name = "David Raker", email = "david.raker@pnnl.gov"}]
+license = "Apache-2.0"
+license-files = ["LICENSE", "COPYRIGHT.md"]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Developers",
+]
+dependencies = [
+    "volttron-core>=2.0.0rc30",   # the modular platform; classic VOLTTRON 10/11 is supported through the import fallbacks
+    "julia>=0.6.2",
+]
+
+[project.scripts]
+volttron-realtime-control = "rt_control.agent:main"
+
+[project.urls]
+Repository = "https://github.com/interoperability-control-modules/realtime-control-agent"
+Homepage = "https://github.com/interoperability-control-modules/realtime-control-agent"
+
+[tool.poetry]
+packages = [{ include = "rt_control" }]
 
 [tool.isort]
 profile = "black"
@@ -15,51 +45,6 @@ warn_return_any = true
 warn_unused_configs = true
 show_error_codes = true
 exclude = ['docs/']
-
-[tool.poetry]
-name = "volttron-realtime-control"
-version = "0.2"
-description = ""
-authors = ["David Raker <david.raker@pnnl.gov>"]
-license = "Apache License 2.0"
-readme = "README.md"
-#repository = "https://github.com/eclipse-volttron"
-#homepage = "https://github.com/eclipse-volttron/volttron-interoperability"
-keywords = []
-packages = [ { include = "rt_control"} ]
-classifiers = [
-    "Programming Language :: Python :: 3 :: Only",
-    "Intended Audience :: Science/Research",
-    "Intended Audience :: Information Technology",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Other Audience",
-    "License :: OSI Approved :: Apache Software License"
-]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-volttron = ">=11.0.0rc1" # {path="/home/dmr/Projects/volttron-modular/core/volttron-core", develop=true}  # ">=10.0.5rc0,<11.0"
-julia = ">=0.6.2"
-
-
-#[tool.poetry.group.dev.dependencies]
-#volttron-testing = "^0.4.0rc0"
-#pytest = "^6.2.5"
-#pytest-cov = "^3.0.0"
-#mock = "^4.0.3"
-#pre-commit = "^2.17.0"
-#yapf = "^0.32.0"
-#toml = "^0.10.2"
-#mypy = "^0.942"
-#coverage = "^6.3.2"
-#isort = "^5.10.1"
-
-#[tool.poetry.group.docs.dependencies]
-#Sphinx = "^4.5.0"
-#sphinx-rtd-theme = "^1.0.0"
-
-[tool.poetry.scripts]
-volttron-realtime-control = "rt_control.agent:main"
 
 [tool.yapf]
 based_on_style = "pep8"

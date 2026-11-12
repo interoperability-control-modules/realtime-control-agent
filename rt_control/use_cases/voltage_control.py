@@ -23,6 +23,6 @@ class VoltageControl(UseCase):
 
     def to_julia(self, cee):
         return cee.EnergyStorageUseCases.VoltageControl(
-            cee.FixedIntervalTimeSeries(datetime.now(timezone.utc), self.controller.resolution, [self.forecast_power]),
+            cee.FixedIntervalTimeSeries(datetime.now(timezone.utc), self.controller.resolution, [self.metered_voltage]),
             self.reference_voltage
         )

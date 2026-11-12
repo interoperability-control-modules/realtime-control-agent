@@ -1,5 +1,9 @@
 .idea
 .rt_test_volttron
-__pychache__
+__pycache__/
 *.pyc
 dist
+.vscode/
+build/
+*.egg-info/
+*.log

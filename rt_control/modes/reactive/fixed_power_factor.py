@@ -4,7 +4,7 @@ import math
 from importlib.metadata import distribution, PackageNotFoundError
 try:
     distribution('volttron-core')
-    from volttron.utils import setup_logging
+    from volttron.client.logs import setup_logging
 except PackageNotFoundError:
     from volttron.platform.agent.utils import setup_logging
 

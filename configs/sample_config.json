@@ -1,4 +1,7 @@
 {
+  "ctrl_eval_engine_app_path": "/path/to/ctrl-eval-engine/app",
+  "julia_path": "julia",
+  "mode_package": "engine",
   "ess": {
     "class_name": "FakeESS",
     "power_capacity_kw": 100,
@@ -9,19 +12,38 @@
     "actuator_vip": "",
     "power_command_point": ""
   },
+  "controller": {
+    "SocUseMinPct": 10,
+    "SocUseMaxPct": 90,
+    "maxRampRates": {"RpuRteMax": 20, "RpdRteMax": 20, "RpuChaRteMax": 20, "RpdChaRteMax": 20}
+  },
   "modes": [
     {
-      "name": "ActivePowerResponseName",
-      "class_name": "ActivePowerResponse",
+      "name": "schedule",
+      "class_name": "ChargeDischargeStorage",
+      "priority": 2,
+      "RpuRte": 10, "RpdRte": 10, "RpuChaRte": 10, "RpdChaRte": 10
+    },
+    {
+      "name": "peak",
+      "class_name": "PeakPowerLimiting",
+      "priority": 1,
       "activation_threshold": 10.0,
-      "output_ratio": 1.0,
-      "ramp_params": {}
+      "output_ratio": 100.0
+    },
+    {
+      "name": "limit",
+      "class_name": "ActivePowerLimit",
+      "priority": 0,
+      "LimWMax": 80,
+      "LimWMin": -50
     }
   ],
   "use_cases": [
     {
       "class_name": "PeakLimiting",
-      "realtime_power_topic": "devices/SomeLoad/RealPower"
+      "realtime_power_topic": "devices/SomeLoad/all",
+      "realtime_power_point": "RealPower"
     }
   ],
   "resolution": 5.0,

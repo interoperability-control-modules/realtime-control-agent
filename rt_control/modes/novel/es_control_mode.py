@@ -49,4 +49,3 @@ class ESControlMode(ControlMode):
         pass
 
 
-cee_app_path = '/home/dmr/Projects/DERControl/ControlAgent/scratch/ctrl-eval-engine-app'

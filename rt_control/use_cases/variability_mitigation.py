@@ -23,6 +23,6 @@ class VariabilityMitigation(UseCase):
 
     def to_julia(self, cee):
         return cee.EnergyStorageUseCases.VariabilityMitigation(
-            cee.FixedIntervalTimeSeries(datetime.now(timezone.utc), self.controller.resolution, [self.forecast_power]),
+            cee.FixedIntervalTimeSeries(datetime.now(timezone.utc), self.controller.resolution, [self.metered_power]),
             self.rated_power_kw
         )
